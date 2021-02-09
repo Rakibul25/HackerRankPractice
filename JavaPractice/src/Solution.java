@@ -1,34 +1,44 @@
-import java.util.*;
+
 import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
 
 
 class Solution{
-    public static void main(String []argh){
-        Scanner in = new Scanner(System.in);
-        int t=in.nextInt();
-        for(int i=0;i<t;i++){
-            int a = in.nextInt();
-            int b = in.nextInt();
-            int n = in.nextInt();
-            int term = a;
-            Math math = new Math();
-            for(int j=0;j<n;j++)
-            {
-                term=term+(math.pow1(j)*b);
-                System.out.print(term+" ");
+    static String findsize(String numString)
+    {
+        String answer = "";
+        try{
+            long num = Long.parseLong(numString);
+            answer = numString + " can be fitted in:\n";
+            if((num<=Byte.MAX_VALUE) && (num>=Byte.MIN_VALUE)){
+                answer = answer.concat("* byte\n* short\n* int\n* long");
+            }else if((num <= Short.MAX_VALUE) && (num >= Short.MIN_VALUE)){
+                answer = answer.concat("* short\n* int\n* long");
+            }else if((num <= Integer.MAX_VALUE) && (num >= Integer.MIN_VALUE)){
+                    answer = answer.concat("* int\n* long");
+            }else{
+                    answer = answer.concat("* long");
             }
-            System.out.println();
+        }catch (NumberFormatException e){
+            answer = numString+" can't be fitted anywhere.";
         }
-        in.close();
+        return answer;
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt() ;
+        sc.nextLine();
+        for(int i=0; i<t;i++){
+            String x = sc.nextLine();
+            System.out.println(findsize(x));
+        }
     }
 }
-class Math{
-    int i;
-    int pow1(int b){
-        int a=1;
-        for(i = 0;i<b; i++){
-            a = a*2;
-        }
-        return a;
-    }
-}
+
+
+
