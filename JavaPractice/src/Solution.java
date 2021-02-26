@@ -1,36 +1,33 @@
+import java.io.*;
 import java.util.*;
-public class Solution {
-	
-   static Iterator func(ArrayList mylist){
-      Iterator it=mylist.iterator();
-      while(it.hasNext()){
-         Object element = it.next();
-         if(element instanceof String)//Hints: use instanceof operator
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-			break;
-		}
-      return it;
-      
-   }
-   @SuppressWarnings({ "unchecked" })
-   public static void main(String []args){
-      ArrayList mylist = new ArrayList();
-      Scanner sc = new Scanner(System.in);
-      int n = sc.nextInt();
-      int m = sc.nextInt();
-      for(int i = 0;i<n;i++){
-         mylist.add(sc.nextInt());
-      }
-      
-      mylist.add("###");
-      for(int i=0;i<m;i++){
-         mylist.add(sc.next());
-      }
-      
-      Iterator it=func(mylist);
-      while(it.hasNext()){
-         Object element = it.next();
-         System.out.println((String)element);
-      }
-   }
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scanner = new Scanner(System.in);
+        int n = Integer.parseInt(scanner.nextLine());
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 0;i < n;i++){
+            list.add(scanner.nextInt());
+        }
+        int numQueries = scanner.nextInt();
+        scanner.nextLine();
+        for(int i = 0;i < numQueries;i++){
+            String queryType = scanner.nextLine();
+            if(queryType.equals("Insert")){
+                String[] queryArray = scanner.nextLine().split(" ");
+                list.add(Integer.parseInt(queryArray[0]),Integer.parseInt(queryArray[1]));
+            }else{
+                int removeIndex = Integer.parseInt(scanner.nextLine());
+                list.remove(removeIndex);
+            }  
+        }
+        for(Integer num : list){
+            System.out.print(num+" ");
+        }
+    }
 }
