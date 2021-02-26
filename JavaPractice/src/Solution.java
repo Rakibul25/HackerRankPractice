@@ -1,33 +1,31 @@
-import java.io.*;
+//Complete this code or write your own from scratch
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import java.io.*;
 
-public class Solution {
+class Solution{
+    private static Scanner sc;
 
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner scanner = new Scanner(System.in);
-        int n = Integer.parseInt(scanner.nextLine());
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int i = 0;i < n;i++){
-            list.add(scanner.nextInt());
-        }
-        int numQueries = scanner.nextInt();
-        scanner.nextLine();
-        for(int i = 0;i < numQueries;i++){
-            String queryType = scanner.nextLine();
-            if(queryType.equals("Insert")){
-                String[] queryArray = scanner.nextLine().split(" ");
-                list.add(Integer.parseInt(queryArray[0]),Integer.parseInt(queryArray[1]));
-            }else{
-                int removeIndex = Integer.parseInt(scanner.nextLine());
-                list.remove(removeIndex);
-            }  
-        }
-        for(Integer num : list){
-            System.out.print(num+" ");
-        }
-    }
+	public static void main(String []argh)
+	{
+        Map<String, String> phoneBook = new HashMap<String, String>();
+        sc = new Scanner(System.in);
+        int numFriends = sc.nextInt();
+        sc.nextLine();
+
+         for (int i = 0; i < numFriends; i++) {
+             String name = sc.nextLine();
+              String phone = sc.nextLine();
+                phoneBook.put(name, phone);
+            }
+		while(sc.hasNext())
+		{
+                String inputName = sc.nextLine();
+                if (phoneBook.containsKey(inputName)) {
+                    System.out.println(inputName + "=" + phoneBook.get(inputName));
+                } else {
+                    System.out.println("Not found");
+                }
+		}
+	}
 }
+
