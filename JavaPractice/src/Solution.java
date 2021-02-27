@@ -1,31 +1,26 @@
-//Complete this code or write your own from scratch
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
-class Solution{
-    private static Scanner sc;
+public class Solution {
 
-	public static void main(String []argh)
-	{
-        Map<String, String> phoneBook = new HashMap<String, String>();
-        sc = new Scanner(System.in);
-        int numFriends = sc.nextInt();
-        sc.nextLine();
-
-         for (int i = 0; i < numFriends; i++) {
-             String name = sc.nextLine();
-              String phone = sc.nextLine();
-                phoneBook.put(name, phone);
-            }
-		while(sc.hasNext())
-		{
-                String inputName = sc.nextLine();
-                if (phoneBook.containsKey(inputName)) {
-                    System.out.println(inputName + "=" + phoneBook.get(inputName));
-                } else {
-                    System.out.println("Not found");
-                }
-		}
-	}
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+         String A=sc.next();
+         String B=sc.next();
+         /* Enter your code here. Print output to STDOUT. */
+         String output =" ";
+         System.out.println(A.length()+B.length()); 
+         if(A.compareTo(B)>0) {
+          output ="Yes";
+         }else {
+             output = "No";
+         }
+         System.out.println(output);
+         System.out.println(A.substring(0, 1).toUpperCase()+""+A.substring(1)+" "+B.substring(0, 1).toUpperCase()+""+B.substring(1));
+        
+    }
 }
+
+
 
